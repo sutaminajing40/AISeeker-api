@@ -1,0 +1,7 @@
+{
+  "name": "aiseeker",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
