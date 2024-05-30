@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { PdfService } from './PdfService'
+import { PdfService } from '../PdfService'
 import fs from 'fs'
 
 export async function registPdf(req: Request, res: Response) {

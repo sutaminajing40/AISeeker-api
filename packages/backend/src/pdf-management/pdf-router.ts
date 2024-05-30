@@ -1,6 +1,6 @@
 import { Router } from 'express'
-import { registPdf } from './registPdf'
-import { deletePdf } from './deletePdf'
+import { registPdf } from './operations/regist-pdf'
+import { deletePdf } from './operations/delete-pdf'
 
 const router = Router()
 
