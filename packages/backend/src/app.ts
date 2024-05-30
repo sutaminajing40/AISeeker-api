@@ -5,18 +5,15 @@ import { registPdf } from './pdf-management/registPdf'
 import dotenv from 'dotenv'
 import { PORT } from './utils/constants'
 import { deletePdf } from './pdf-management/deletePdf'
+import pdfRouter from './pdf-management/pdfRouter'
 
 const app = express()
 const port = PORT
 dotenv.config()
-
 app.use(fileUpload())
 
 app.get('/api/ping', ping)
-
-app.post('/api/pdf', registPdf)
-
-app.delete('/api/pdf', deletePdf)
+app.use('/api/pdf', pdfRouter)
 
 app.post('/api/query', (req, res) => {
   res.send('Hello World!')
