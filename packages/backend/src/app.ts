@@ -1,6 +1,5 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
-import dotenv from 'dotenv'
 
 import { ping } from './utils/send-ping'
 import { PORT } from './utils/constants'
@@ -9,7 +8,6 @@ import queryRouter from './query-management/query-router'
 
 const app = express()
 const port = PORT
-dotenv.config()
 app.use(fileUpload())
 
 app.get('/api/ping', ping)

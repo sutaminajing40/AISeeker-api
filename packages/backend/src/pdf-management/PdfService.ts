@@ -2,10 +2,10 @@ import fs from 'fs'
 
 import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf'
 import { FaissStore } from '@langchain/community/vectorstores/faiss'
-import { OpenAIEmbeddings } from '@langchain/openai'
 import { Document } from '@langchain/core/documents'
 
 import { PDF_SAVE_DIR, FAISS_INDEX_DIR } from '../utils/constants'
+import { embeddings } from '../utils/models'
 
 export class PdfService {
   private pdfSaveDir = PDF_SAVE_DIR
@@ -17,6 +17,15 @@ export class PdfService {
     }
     if (!fs.existsSync(this.faissIndexDir)) {
       fs.mkdirSync(this.faissIndexDir, { recursive: true })
+    }
+  }
+
+  public async getVectorStore(): Promise<FaissStore> {
+    if (fs.existsSync(this.faissIndexDir)) {
+      const vectorStore = await FaissStore.load(this.faissIndexDir, embeddings)
+      return vectorStore
+    } else {
+      throw new Error('ベクトルデータベースが存在しません。')
     }
   }
 
@@ -41,17 +50,14 @@ export class PdfService {
     let vectorStore: FaissStore
 
     if (fs.existsSync(faissIndexPath)) {
-      vectorStore = await FaissStore.load(
-        this.faissIndexDir,
-        new OpenAIEmbeddings(),
-      )
+      vectorStore = await FaissStore.load(this.faissIndexDir, embeddings)
     } else {
       vectorStore = await FaissStore.fromDocuments(
         [new Document({ pageContent: '0', metadata: {} })],
-        new OpenAIEmbeddings(),
+        embeddings,
       )
     }
-    await vectorStore.addDocuments(docs, { ids: [pdfSavePath] })
+    await vectorStore.addDocuments(docs)
     await vectorStore.save(this.faissIndexDir)
   }
 }
