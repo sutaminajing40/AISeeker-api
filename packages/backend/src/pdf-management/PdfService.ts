@@ -1,8 +1,9 @@
 import fs from 'fs'
-import { PDFLoader } from 'langchain/document_loaders/fs/pdf'
+import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf'
 import { FaissStore } from '@langchain/community/vectorstores/faiss'
 import { OpenAIEmbeddings } from '@langchain/openai'
 import { PDF_SAVE_DIR, FAISS_INDEX_DIR } from '../utils/constants'
+import { Document } from '@langchain/core/documents'
 
 export class PdfService {
   private pdfSaveDir = PDF_SAVE_DIR
@@ -20,7 +21,7 @@ export class PdfService {
   public savePdf(fileName: string, pdfFileData: Buffer): string {
     const pdfSavePath = `${this.pdfSaveDir}/${fileName}`
     if (fs.readdirSync(this.pdfSaveDir).includes(fileName)) {
-      throw new Error('このPDFはすでに登録されています。')
+      throw new Error()
     }
     fs.writeFileSync(pdfSavePath, pdfFileData)
     return pdfSavePath
@@ -30,20 +31,20 @@ export class PdfService {
     const loader = new PDFLoader(pdfSavePath)
     const docs = await loader.load()
     const faissIndexPath = `${this.faissIndexDir}/faiss.index`
+    let vectorStore: FaissStore
 
     if (fs.existsSync(faissIndexPath)) {
-      const vectorStore = await FaissStore.load(
+      vectorStore = await FaissStore.load(
         this.faissIndexDir,
         new OpenAIEmbeddings(),
       )
-      await vectorStore.addDocuments(docs)
-      await vectorStore.save(this.faissIndexDir)
     } else {
-      const vectorStore = await FaissStore.fromDocuments(
-        docs,
+      vectorStore = await FaissStore.fromDocuments(
+        [new Document({ pageContent: '0', metadata: {} })],
         new OpenAIEmbeddings(),
       )
-      await vectorStore.save(this.faissIndexDir)
     }
+    await vectorStore.addDocuments(docs, { ids: [pdfSavePath] })
+    await vectorStore.save(this.faissIndexDir)
   }
 }
