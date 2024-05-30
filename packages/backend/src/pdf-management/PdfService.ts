@@ -18,6 +18,11 @@ export class PdfService {
     }
   }
 
+  public deletePdf(): void {
+    fs.rmSync(this.pdfSaveDir, { recursive: true })
+    fs.rmSync(this.faissIndexDir, { recursive: true })
+  }
+
   public savePdf(fileName: string, pdfFileData: Buffer): string {
     const pdfSavePath = `${this.pdfSaveDir}/${fileName}`
     if (fs.readdirSync(this.pdfSaveDir).includes(fileName)) {
