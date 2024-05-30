@@ -1,6 +1,8 @@
-import { Request, Response } from 'express'
-import { PdfService } from '../PdfService'
 import fs from 'fs'
+
+import { Request, Response } from 'express'
+
+import { PdfService } from '../PdfService'
 
 export async function registPdf(req: Request, res: Response) {
   if (!req.files || !req.files.pdf) {

@@ -1,9 +1,11 @@
 import fs from 'fs'
+
 import { PDFLoader } from '@langchain/community/document_loaders/fs/pdf'
 import { FaissStore } from '@langchain/community/vectorstores/faiss'
 import { OpenAIEmbeddings } from '@langchain/openai'
-import { PDF_SAVE_DIR, FAISS_INDEX_DIR } from '../utils/constants'
 import { Document } from '@langchain/core/documents'
+
+import { PDF_SAVE_DIR, FAISS_INDEX_DIR } from '../utils/constants'
 
 export class PdfService {
   private pdfSaveDir = PDF_SAVE_DIR

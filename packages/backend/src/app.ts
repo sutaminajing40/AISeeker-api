@@ -1,7 +1,8 @@
 import express from 'express'
 import fileUpload from 'express-fileupload'
-import { ping } from './utils/send-ping'
 import dotenv from 'dotenv'
+
+import { ping } from './utils/send-ping'
 import { PORT } from './utils/constants'
 import pdfRouter from './pdf-management/pdf-router'
 import queryRouter from './query-management/query-router'
