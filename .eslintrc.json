@@ -1,7 +1,21 @@
 {
-    "extends": ["next/core-web-vitals", "plugin:prettier/recommended"],
-    "plugins": ["prettier"],
-    "rules": {
-      "prettier/prettier": "error"
-    }
+  "extends": [
+      "next/core-web-vitals",
+      "plugin:prettier/recommended",
+      "eslint:recommended",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+  ],
+  "plugins": [
+      "prettier",
+      "import"
+  ],
+  "rules": {
+      "prettier/prettier": "error",
+      "import/order": ["error", {
+          "groups": ["builtin", "external", "internal"],
+          "newlines-between": "always"
+      }],
+      "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+  }
 }
