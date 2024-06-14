@@ -1,16 +1,12 @@
 import { Main } from '@/features/home/main/Main'
+import { Sidebar } from '@/features/home/sidebar/Sidebar'
+import './main.css'
 
 export default function Page() {
   return (
-    <>
-      <main>
-        <div>
-          <Main />
-        </div>
-        <aside>
-          <h1>aside</h1>
-        </aside>
-      </main>
-    </>
+    <div className="container">
+      <Sidebar />
+      <Main />
+    </div>
   )
 }

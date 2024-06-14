@@ -1,0 +1,14 @@
+.select-datasource {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+  width: 10%;
+}
+
+.select-datasource select {
+  padding: 10px;
+  border: 1px solid rgb(112, 113, 118);
+  border-radius: 4px;
+  background-color: rgb(33 40 66);
+  color: rgb(112, 113, 118);
+}
