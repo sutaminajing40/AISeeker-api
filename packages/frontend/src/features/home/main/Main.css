@@ -3,6 +3,7 @@
   flex-direction: column;
   flex: 3;
   height: 100vh;
+  display: flex;
 }
 
 .main__dataset {
@@ -13,6 +14,7 @@
 }
 
 .main__response {
+  color: white;
   height: 75%;
 }
 

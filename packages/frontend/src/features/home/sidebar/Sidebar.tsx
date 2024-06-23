@@ -14,7 +14,10 @@ export function Sidebar() {
       </header>
       <main className="sidebar-content"></main>
       <footer className="sidebar-footer">
-        <div className="sidebar-footer-button"></div>
+        <button className="sidebar-footer-button">
+          <Image src="/images/user.png" alt="ユーザー" width={40} height={40} />
+          <p>USER</p>
+        </button>
       </footer>
     </aside>
   )

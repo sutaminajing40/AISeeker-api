@@ -34,8 +34,21 @@
 }
 
 .sidebar-footer {
-  height: 40px; /* 固定の高さ */
+  height: 80px; /* 固定の高さ */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.sidebar-footer-button {
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-left: 50px;
+  background-color: rgb(18, 23, 43);
+  color: white;
+  box-shadow: none;
+  border: none;
+  cursor: pointer;
 }

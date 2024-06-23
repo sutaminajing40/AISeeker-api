@@ -8,7 +8,11 @@ export function Main() {
       <div className="main__dataset">
         <SelectDatasource />
       </div>
-      <div className="main__response"></div>
+      <div className="main__response">
+        <a>
+          <p>ここにレスポンスが表示されます</p>
+        </a>
+      </div>
       <div className="main__input">
         <Input />
       </div>
