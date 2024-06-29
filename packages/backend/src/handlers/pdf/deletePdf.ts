@@ -1,14 +1,19 @@
-import { Request, Response } from 'express'
+import { PdfService } from '../../pdf-management/PdfService'
+import { APIGatewayProxyHandler } from 'aws-lambda'
 
-import { PdfService } from '../PdfService'
-
-export async function deletePdf(req: Request, res: Response) {
+export const handler: APIGatewayProxyHandler = async (event) => {
   try {
     const pdfService = new PdfService()
     pdfService.deletePdf()
-    res.status(200).send('PDFの削除が完了しました。')
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: 'PDFの削除が完了しました。' }),
+    }
   } catch (err) {
-    res.status(500).send('PDFの削除に失敗しました。')
     console.error('Delete Error:', err)
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'PDFの削除に失敗しました。' }),
+    }
   }
 }
