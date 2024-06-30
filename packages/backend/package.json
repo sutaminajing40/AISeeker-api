@@ -16,7 +16,7 @@
     "start": "node dist/app.js",
     "dev": "concurrently \"tsc -w\" \"nodemon ./dist/main.js\"",
     "build": "tsc",
-    "package": "yarn run build && zip -r function.zip dist node_modules"
+    "package": "yarn run build && zip -r infra/function.zip dist node_modules"
   },
   "main": "dist/app.js",
   "keywords": [],
