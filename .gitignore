@@ -6,3 +6,4 @@ packages/backend/.env
 packages/backend/dist
 packages/backend/data/*
 packages/backend/input_data/*
+packages/backend/infra/function.zip

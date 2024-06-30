@@ -11,11 +11,18 @@
       "import"
   ],
   "rules": {
-      "prettier/prettier": "error",
-      "import/order": ["error", {
-          "groups": ["builtin", "external", "internal"],
-          "newlines-between": "always"
-      }],
-      "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
+    "prettier/prettier": "error",
+    "import/order": [
+        "error",
+        {
+            "groups": ["builtin", "external", "internal", "parent", "sibling", "index"],
+            "newlines-between": "always",
+            "alphabetize": {
+                "order": "asc",
+                "caseInsensitive": true
+            }
+        }
+    ],
+    "no-unused-vars": ["error", { "vars": "all", "args": "after-used", "ignoreRestSiblings": false }]
   }
 }
