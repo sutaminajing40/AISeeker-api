@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "sam local start-api",
     "build": "tsc",
-    "deploy": "sam build && sam deploy --guided --profile private_AISeeker"
+    "deploy": "sam build && sam deploy --config-file infra/samconfig.toml --profile private_AISeeker"
   },
   "main": "dist/app.js",
   "keywords": [],
