@@ -1,14 +1,32 @@
 import fs from 'fs'
 
-import { APIGatewayProxyHandler, APIGatewayProxyResult } from 'aws-lambda'
+import {
+  APIGatewayProxyHandler,
+  APIGatewayProxyResult,
+  APIGatewayProxyEvent,
+} from 'aws-lambda'
+import multipart from 'aws-lambda-multipart-parser'
 import { Request, Response } from 'express'
 import { UploadedFile, FileArray } from 'express-fileupload'
 
 import { PdfService } from '../../services/PdfService'
 
-export const handler: APIGatewayProxyHandler = async (event) => {
+export const handler: APIGatewayProxyHandler = async (
+  event: APIGatewayProxyEvent,
+) => {
+  // イベントのボディをデコード
+  const decodedEvent = {
+    ...event,
+    body: event.body
+      ? Buffer.from(event.body, 'base64').toString('binary')
+      : null,
+  }
+
+  // multipart/form-dataをパース
+  const parsedFiles = multipart.parse(decodedEvent, true)
+
   const req = {
-    files: event.files,
+    files: parsedFiles,
   } as Request & { files?: FileArray }
   const res = {
     status: (code: number) => ({
