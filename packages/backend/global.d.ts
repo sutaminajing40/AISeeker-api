@@ -42,3 +42,8 @@ declare module 'express-fileupload' {
     }
   }
 }
+
+declare module 'aws-lambda-multipart-parser' {
+  export function parse(event: any, spotText?: boolean): any
+  // 必要に応じて他の関数や型を追加
+}

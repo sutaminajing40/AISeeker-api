@@ -1,0 +1,54 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Resources:
+  PdfFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: ../dist/
+      Handler: handlers/pdf/registPdf.handler
+      Runtime: nodejs18.x
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /api/pdf
+            Method: post
+
+  DeletePdfFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: ../dist/
+      Handler: handlers/pdf/deletePdf.handler
+      Runtime: nodejs18.x
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /api/pdf
+            Method: delete
+
+  SendQueryFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: ../dist/
+      Handler: handlers/query/sendQuery.handler
+      Runtime: nodejs18.x
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /api/query
+            Method: post
+
+  PingFunction:
+    Type: 'AWS::Serverless::Function'
+    Properties:
+      CodeUri: ../dist/
+      Handler: handlers/ping.handler
+      Runtime: nodejs18.x
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /api/ping
+            Method: get
