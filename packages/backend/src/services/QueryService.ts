@@ -1,10 +1,10 @@
 import { StringOutputParser } from '@langchain/core/output_parsers'
-import { pull } from 'langchain/hub'
 import { ChatPromptTemplate } from '@langchain/core/prompts'
 import { createStuffDocumentsChain } from 'langchain/chains/combine_documents'
+import { pull } from 'langchain/hub'
 
+import { PdfService } from '../services/PdfService'
 import { llm } from '../utils/models'
-import { PdfService } from '../pdf-management/PdfService'
 
 export class QueryService {
   public async sendQuery(query: string) {

@@ -6,6 +6,8 @@
   ],
   "scripts": {
     "backend:dev": "yarn workspace backend dev",
+    "backend:build": "yarn workspace backend build",
+    "backend:package": "yarn workspace backend package",
     "frontend:dev": "yarn workspace frontend dev"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 
-import { QueryService } from '../QueryService'
+import { QueryService } from '../../services/QueryService'
 
 export async function sendQuery(req: Request, res: Response) {
   if (!req.body.query) {

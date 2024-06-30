@@ -1,15 +1,19 @@
 import fs from 'fs'
 
 import { Request, Response } from 'express'
+import { UploadedFile, FileArray } from 'express-fileupload'
 
-import { PdfService } from '../PdfService'
+import { PdfService } from '../../services/PdfService'
 
-export async function registPdf(req: Request, res: Response) {
-  if (!req.files || !req.files.pdf) {
+export async function registPdf(
+  req: Request & { files?: FileArray },
+  res: Response,
+) {
+  if (!req.files || !('pdf' in req.files)) {
     return res.status(400).send('PDFファイルがありません。')
   }
 
-  const pdfFile = req.files.pdf
+  const pdfFile = req.files.pdf as UploadedFile
   if (Array.isArray(pdfFile) || pdfFile.mimetype !== 'application/pdf') {
     return res
       .status(400)

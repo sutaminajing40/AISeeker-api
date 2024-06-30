@@ -1,5 +1,6 @@
-import { PdfService } from '../../pdf-management/PdfService'
 import { APIGatewayProxyHandler } from 'aws-lambda'
+
+import { PdfService } from '../../services/PdfService'
 
 export const handler: APIGatewayProxyHandler = async (event) => {
   try {
