@@ -1,21 +1,28 @@
-import { Request, Response } from 'express'
+import { APIGatewayProxyHandler } from 'aws-lambda'
 
 import { QueryService } from '../../services/QueryService'
 
-export async function sendQuery(req: Request, res: Response) {
-  if (!req.body.query) {
-    return res.status(400).send('クエリがありません。')
+export const handler: APIGatewayProxyHandler = async (event) => {
+  const query = JSON.parse(event.body || '{}').query
+  if (!query) {
+    return {
+      statusCode: 400,
+      body: JSON.stringify({ message: 'クエリがありません。' }),
+    }
   }
 
-  //TODO: クエリの型を定義する
-  const query = req.body.query as string
   const queryService = new QueryService()
-
   try {
     const result = await queryService.sendQuery(query)
-    res.status(200).send(result)
+    return {
+      statusCode: 200,
+      body: JSON.stringify(result),
+    }
   } catch (err) {
-    res.status(400).send(err)
     console.error('Query Error:', err)
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ message: 'クエリの処理に失敗しました。' }),
+    }
   }
 }

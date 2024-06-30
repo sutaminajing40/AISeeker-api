@@ -1,5 +1,8 @@
-import { Request, Response } from 'express'
+import { APIGatewayProxyHandler } from 'aws-lambda'
 
-export const ping = (req: Request, res: Response) => {
-  res.send('Hello World!')
+export const handler: APIGatewayProxyHandler = async () => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ message: 'Hello World!' }),
+  }
 }
