@@ -5,7 +5,7 @@
     "packages/*"
   ],
   "scripts": {
-    "backend:dev": "yarn workspace backend dev",
+    "backend:dev": "yarn workspace backend dev:all",
     "backend:build": "yarn workspace backend build",
     "backend:deploy": "yarn workspace backend deploy",
     "frontend:dev": "yarn workspace frontend dev"

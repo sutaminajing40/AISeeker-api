@@ -4,7 +4,7 @@ Resources:
   PdfFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      CodeUri: dist/
+      CodeUri: ../dist/
       Handler: handlers/pdf/registPdf.handler
       Runtime: nodejs18.x
       Events:
@@ -17,7 +17,7 @@ Resources:
   DeletePdfFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      CodeUri: dist/
+      CodeUri: ../dist/
       Handler: handlers/pdf/deletePdf.handler
       Runtime: nodejs18.x
       Events:
@@ -30,7 +30,7 @@ Resources:
   SendQueryFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      CodeUri: dist/
+      CodeUri: ../dist/
       Handler: handlers/query/sendQuery.handler
       Runtime: nodejs18.x
       Events:
@@ -43,7 +43,7 @@ Resources:
   PingFunction:
     Type: 'AWS::Serverless::Function'
     Properties:
-      CodeUri: dist/
+      CodeUri: ../dist/
       Handler: handlers/ping.handler
       Runtime: nodejs18.x
       Events:
