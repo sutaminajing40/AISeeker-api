@@ -54,7 +54,7 @@ export class PdfService {
     } else {
       vectorStore = await FaissStore.fromDocuments(
         [new Document({ pageContent: '0', metadata: {} })],
-        embeddings,
+        embeddings
       )
     }
     await vectorStore.addDocuments(docs)
