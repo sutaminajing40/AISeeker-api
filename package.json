@@ -14,9 +14,9 @@
     "pickleparser": "^0.2.1"
   },
   "scripts": {
-    "dev": "tsc -w",
+    "tsc": "tsc -w",
     "dev:sam": "nodemon --watch dist --exec 'sam local start-api -t infra/template.yaml'",
-    "dev:all": "concurrently \"yarn run dev\" \"yarn run dev:sam\"",
+    "dev": "concurrently \"yarn run dev:sam\" \"yarn run tsc\"",
     "build": "tsc",
     "deploy": "sam build -t infra/template.yaml && sam deploy -t infra/template.yaml --config-file samconfig.toml --profile private_AISeeker"
   },
