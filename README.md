@@ -1,30 +1,45 @@
-# AISeeker
+# AISeeker-api
 
-AISeeker は AI を活用した検索アプリケーションです。
+AISeeker プロジェクトのバックエンドAPIです。
 
-## プロジェクト構成の変更について
+## 概要
 
-このプロジェクトは以前、モノレポ構成で管理されていましたが、開発効率の向上と管理の簡素化のため、バックエンドとフロントエンドを別々のリポジトリに分割しました。
+このリポジトリは、以前モノレポとして管理していたAISeekerプロジェクトから分離したバックエンド部分です。AI を活用した検索機能を提供するAPIを含んでいます。
 
-### 旧リポジトリ
+## 関連リポジトリ
 
-- [AISeeker (モノレポ)](https://github.com/sutaminajing40/AISeeker)
-
-### 新リポジトリ
-
-現在、プロジェクトは以下の2つのリポジトリで管理されています：
-
-- バックエンド: [AISeeker-api](https://github.com/sutaminajing40/AISeeker-api)
 - フロントエンド: [AISeeker-app](https://github.com/sutaminajing40/AISeeker-app)
+- 旧モノレポ: [AISeeker](https://github.com/sutaminajing40/AISeeker)
 
-## 開発環境のセットアップ
+## セットアップ
 
-各リポジトリのREADMEを参照してください。
+1. リポジトリをクローン
+   ```
+   git clone https://github.com/sutaminajing40/AISeeker-api.git
+   cd AISeeker-api
+   ```
 
-- [バックエンドのセットアップ](https://github.com/sutaminajing40/AISeeker-api#setup)
-- [フロントエンドのセットアップ](https://github.com/sutaminajing40/AISeeker-app#setup)
+2. 依存関係をインストール
+   ```
+   npm install
+   ```
 
-## 開発時の注意点
+3. 環境変数を設定
+   `.env.sample` をコピーして `.env` を作成し、必要な環境変数を設定してください。
 
-- バックエンドとフロントエンドの開発は別々のリポジトリで行います。
-- APIエンドポイントの変更などがある場合は、両方のリポジトリで適切に更新してください。
+4. 開発サーバーを起動
+   ```
+   npm run dev
+   ```
+
+## 主な機能
+
+- PDF文書の解析と保存
+- AIを用いた文書検索
+- クエリに基づく回答生成
+
+## 今後の計画
+
+- あとで追記
+
+ご質問や提案がありましたら、Issueを作成してください。
